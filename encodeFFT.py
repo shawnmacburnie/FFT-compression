@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io.wavfile import read, write
-class EncodeFFT():
-
+class FFT():
     def removeSmallest(self, d):
         smallest = 0
         for i in range(1, len(d)):
@@ -11,7 +10,7 @@ class EncodeFFT():
 
         return np.delete(d, smallest)
 
-    def compress(self, file_name, num_remove=5000, num_blocks=1000, plot_change=False):
+    def compress_audio(self, file_name, num_remove=5000, num_blocks=1000, plot_change=False):
         data = read(file_name + '.wav')
         datafft = np.fft.fft(data[1])
 
@@ -34,4 +33,4 @@ class EncodeFFT():
             plt.plot(range(0,len(results)), results)
             plt.show()
 
-EncodeFFT().compress(file_name='ceremony', plot_change=False)
+FFT().compress_audio(file_name='ceremony', plot_change=False)
