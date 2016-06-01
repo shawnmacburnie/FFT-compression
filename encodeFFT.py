@@ -11,7 +11,7 @@ class FFT():
         return np.delete(d, smallest)
 
     def compress_audio(self, file_name, num_remove=5000, num_blocks=1000, plot_change=False):
-        data = read(file_name + '.wav')
+        data = read('audio/' + file_name + '.wav')
         datafft = np.fft.fft(data[1])
 
         results = []
